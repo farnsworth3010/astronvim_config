@@ -69,6 +69,14 @@ return {
   -- augroups/autocommands and custom filetypes also this just pure lua so
   -- anything that doesn't fit in the normal config locations above can go here
   polish = function()
+      local cmp_nvim_lsp = require "cmp_nvim_lsp"
+    require("lspconfig").clangd.setup {
+      capabilities = cmp_nvim_lsp.default_capabilities(),
+      cmd = {
+        "clangd",
+        "--offset-encoding=utf-16",
+      },
+    }
     -- Set up custom filetypes
     -- vim.filetype.add {
     --   extension = {
